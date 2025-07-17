@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dubois & Co.</title>
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #faf9f6;
+      font-family: 'EB Garamond', serif;
+    }
+    .navbar {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      gap: 2rem;
+      padding: 1.5rem 2rem;
+      background-color: transparent;
+      flex-wrap: wrap;
+    }
+    .navbar a {
+      color: #18594a;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1.1rem;
+      transition: opacity 0.3s ease;
+    }
+    .navbar a:hover {
+      opacity: 0.6;
+    }
+    .logo-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 80vh;
+      text-align: center;
+    }
+    .logo-container img {
+      max-width: 300px;
+      height: auto;
+    }
+    @media (max-width: 600px) {
+      .navbar {
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="navbar">
+    <a href="#">Notre équipe</a>
+    <a href="mailto:alex@duboisco.ca">Contact</a>
+  </div>
+  <div class="logo-container">
+    <img src="logo.png" alt="Dubois & Co. logo">
+  </div>
+</body>
+</html>
