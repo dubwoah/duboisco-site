@@ -39,8 +39,14 @@
       text-align: center;
     }
     .logo-container img {
-      max-width: 300px;
+      max-width: 600px;
+      width: 80%;
       height: auto;
+      transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+    .logo-container img:hover {
+      transform: scale(1.05);
+      opacity: 0.95;
     }
     @media (max-width: 600px) {
       .navbar {
@@ -52,7 +58,7 @@
 <body>
   <div class="navbar">
     <a href="#">Notre équipe</a>
-    <a href="mailto:contact@duboisco.ca">Contact</a>
+    <a href="mailto:alex@duboisco.ca">Contact</a>
   </div>
   <div class="logo-container">
     <img src="duboislogo.png" alt="Dubois & Co. logo">
