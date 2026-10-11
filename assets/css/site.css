@@ -1,0 +1,218 @@
+/* Dubois & Co. brand kit v1.0 — brand.html is the visual contract. */
+
+:root {
+  /* colour */
+  --pine: #18594a;       /* sampled from the logo */
+  --pine-deep: #0f3b31;  /* bands, footers, dark grounds */
+  --moss: #6f8f7f;       /* muted text, secondary marks */
+  --bark: #8a6a4f;       /* rare warm accent; never for text on paper */
+  --paper: #faf9f6;
+  --ink: rgba(24, 89, 74, 0.86);
+  --muted: rgba(24, 89, 74, 0.62);
+  --rule: rgba(24, 89, 74, 0.16);
+  --wash: rgba(24, 89, 74, 0.045);
+
+  /* type */
+  --serif: "EB Garamond", Garamond, Georgia, serif;
+  --sans: "Inter", "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+  /* layout */
+  --gutter: clamp(20px, 5vw, 76px);
+  --measure: 46rem;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { background: var(--paper); }
+body {
+  margin: 0;
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  background: var(--paper);
+  color: var(--pine);
+  font-family: var(--sans);
+  font-size: 16px;
+  line-height: 1.62;
+  -webkit-font-smoothing: antialiased;
+}
+img { display: block; max-width: 100%; height: auto; }
+a { color: inherit; }
+
+::selection { background: var(--pine); color: var(--paper); }
+:focus-visible { outline: 2px solid var(--pine); outline-offset: 3px; }
+
+.sr-only {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;
+}
+
+/* headings: EB Garamond, sentence case. The only uppercase is .label. */
+.serif, h1, h2, h3 { font-family: var(--serif); font-weight: 400; }
+.label {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* links */
+.link {
+  text-decoration: none;
+  color: var(--ink);
+  transition: color 0.2s ease;
+}
+.link:hover { color: var(--pine); }
+.link-underline {
+  font-weight: 500;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  text-decoration-color: rgba(24, 89, 74, 0.4);
+  transition: text-decoration-color 0.2s ease;
+}
+.link-underline:hover { text-decoration-color: var(--pine); }
+
+/* language toggle */
+.lang {
+  display: inline-flex;
+  gap: 0.35rem;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--muted);
+}
+.lang a { text-decoration: none; color: var(--muted); }
+.lang a:hover { color: var(--pine); }
+.lang [aria-current] { color: var(--pine); }
+
+/* ---------- home ---------- */
+.home {
+  position: relative;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2.5rem;
+  padding: 5rem var(--gutter);
+}
+.home .lang { position: absolute; top: 1.5rem; right: var(--gutter); }
+.home h1 { margin: 0; }
+.home-logo { width: min(78vw, 560px); }
+.home-nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 16px;
+  font-weight: 500;
+}
+.home-nav .sep { color: rgba(24, 89, 74, 0.3); }
+
+.fade-up { animation: fade-up 0.7s ease-out both; }
+.fade-up.d1 { animation-delay: 0.12s; }
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: none; }
+}
+
+/* ---------- chrome (subpages) ---------- */
+.site-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.25rem var(--gutter);
+}
+.site-header .brand img { height: 52px; width: auto; }
+.site-nav { display: flex; align-items: center; gap: 1.75rem; font-size: 13px; font-weight: 500; }
+.site-nav .links { display: flex; gap: 1.75rem; }
+
+.site-footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.25rem;
+  padding: 1.75rem var(--gutter);
+  border-top: 1px solid var(--rule);
+  font-size: 13px;
+  font-weight: 500;
+}
+.site-footer nav { display: flex; flex-wrap: wrap; align-items: center; gap: 1.5rem; }
+.site-footer .copy { color: var(--muted); font-weight: 400; }
+.site-footer .brand img { height: 30px; width: auto; }
+
+@media (max-width: 560px) {
+  .site-nav .links { display: none; }
+}
+
+/* ---------- about ---------- */
+.page { flex: 1; padding: clamp(3rem, 8vw, 6rem) var(--gutter) 5rem; }
+.wrap { max-width: var(--measure); margin: 0 auto; }
+.page h1 {
+  margin: 0 0 2rem;
+  max-width: 18ch;
+  font-size: clamp(38px, 5.6vw, 68px);
+  line-height: 1.02;
+  letter-spacing: -0.015em;
+  color: var(--pine);
+}
+.prose { font-size: clamp(15.5px, 1.3vw, 18px); color: var(--ink); }
+.prose p { margin: 0 0 1.25rem; }
+
+.section { margin-top: 4.5rem; padding-top: 2.5rem; border-top: 1px solid var(--rule); }
+.section h2 {
+  margin: 0.5rem 0 2rem;
+  font-size: clamp(28px, 3.4vw, 38px);
+  line-height: 1.1;
+}
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 2rem;
+}
+.grid-3 h3 { margin: 0 0 0.5rem; font-size: 22px; line-height: 1.2; }
+.grid-3 p { margin: 0; font-size: 15px; color: var(--ink); }
+.grid-3 .num { display: block; margin-bottom: 0.75rem; }
+@media (max-width: 720px) {
+  .grid-3 { grid-template-columns: 1fr; gap: 1.75rem; }
+}
+
+.cta { margin-top: 4.5rem; font-size: 17px; color: var(--ink); }
+
+/* ---------- companies ---------- */
+.companies { list-style: none; margin: 3.5rem 0 0; padding: 0; border-top: 1px solid var(--rule); }
+.company {
+  display: grid;
+  grid-template-columns: 64px minmax(0, 1fr);
+  gap: 1.5rem;
+  padding: 2rem 0;
+  border-bottom: 1px solid var(--rule);
+}
+.company-mark {
+  display: grid;
+  place-items: center;
+  width: 64px;
+  height: 64px;
+  border-radius: 12px;
+  background: var(--wash);
+  font-family: var(--serif);
+  font-size: 28px;
+  color: var(--pine);
+}
+.company-mark img { width: 100%; height: 100%; object-fit: contain; padding: 10px; }
+.company h2 { margin: 0.35rem 0 0.4rem; font-size: 26px; line-height: 1.15; }
+.company p { margin: 0 0 0.75rem; font-size: 15px; color: var(--ink); max-width: 36rem; }
+.company .site { font-size: 14px; }
+@media (max-width: 480px) {
+  .company { grid-template-columns: 48px minmax(0, 1fr); gap: 1rem; }
+  .company-mark { width: 48px; height: 48px; font-size: 22px; border-radius: 10px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fade-up { animation: none; }
+  * { transition: none !important; }
+}

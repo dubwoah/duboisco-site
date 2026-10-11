@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Brand Kit — Dubois & Co.</title>
+  <meta name="description" content="Dubois & Co. brand kit: logo, colour, type, voice, downloadable assets and design tokens.">
+  <meta name="robots" content="noindex">
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/site.css?v=2">
+  <style>
+    .kit { flex: 1; padding: clamp(2.5rem, 6vw, 5rem) var(--gutter) 5rem; }
+    .kit-wrap { max-width: 68rem; margin: 0 auto; }
+    .kit-hero h1 { margin: 0.5rem 0 1rem; font-size: clamp(42px, 6vw, 76px); line-height: 1; letter-spacing: -0.015em; }
+    .kit-hero p { max-width: 40rem; margin: 0; color: var(--ink); font-size: 17px; }
+    .toc { display: flex; flex-wrap: wrap; gap: 0.5rem 1.5rem; margin-top: 2rem; font-size: 13px; font-weight: 500; }
+
+    .kit-sec { margin-top: 5rem; padding-top: 2.5rem; border-top: 1px solid var(--rule); scroll-margin-top: 1.5rem; }
+    .kit-sec > h2 { margin: 0.4rem 0 0.75rem; font-size: clamp(30px, 3.6vw, 42px); line-height: 1.1; }
+    .kit-sec > p { margin: 0 0 2rem; max-width: 42rem; color: var(--ink); }
+    .kit-sec h3 { margin: 2.75rem 0 1rem; font-size: 22px; }
+
+    .tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem; }
+    .tile { border: 1px solid var(--rule); background: #fff; }
+    .tile .stage { display: grid; place-items: center; height: 220px; padding: 2rem; overflow: hidden; }
+    .tile .stage img { max-height: 150px; width: auto; max-width: 85%; }
+    .tile .stage.paper { background: var(--paper); }
+    .tile .stage.pine { background: var(--pine); }
+    .tile .stage.deep { background: var(--pine-deep); }
+    .tile .cap { padding: 0.75rem 1rem; border-top: 1px solid var(--rule); font-size: 13px; }
+    .tile .cap b { font-weight: 500; display: block; }
+    .tile .cap span { color: var(--muted); }
+
+    .clear-demo { position: relative; display: inline-block; padding: 34px; background: var(--paper); border: 1px dashed var(--rule); }
+    .clear-demo img { height: 120px; width: auto; outline: 1px dashed rgba(24, 89, 74, 0.35); }
+    .clear-demo .x { position: absolute; top: 0; left: 0; width: 34px; height: 34px; display: grid; place-items: center; font-size: 12px; color: var(--muted); }
+
+    .sizes { display: flex; flex-wrap: wrap; align-items: flex-end; gap: 2.5rem; }
+    .sizes figure { margin: 0; }
+    .sizes figcaption { margin-top: 0.5rem; font-size: 12px; color: var(--muted); }
+
+    .misuse .stage img { max-height: 110px; }
+    .misuse .cap::before { content: "✕ "; color: #a8432f; }
+
+    .swatches { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 1rem; }
+    .swatch { border: 1px solid var(--rule); background: #fff; cursor: pointer; text-align: left; padding: 0; font: inherit; color: inherit; }
+    .swatch .chip { height: 110px; }
+    .swatch .meta { padding: 0.75rem 1rem; font-size: 13px; }
+    .swatch .meta b { display: block; font-weight: 500; }
+    .swatch .meta code { color: var(--muted); }
+    .swatch:hover { border-color: var(--pine); }
+    .swatch[data-copied] .meta code::after { content: " · copied"; color: var(--pine); }
+
+    .proportion { display: flex; height: 44px; border: 1px solid var(--rule); }
+    .proportion div { display: grid; place-items: center; font-size: 11px; letter-spacing: 0.08em; }
+
+    .pairs { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; }
+    .pair { padding: 1.5rem; border: 1px solid var(--rule); }
+    .pair .serif { font-size: 26px; line-height: 1.1; }
+    .pair small { display: block; margin-top: 0.5rem; font-size: 12px; opacity: 0.75; }
+
+    .type-specimen { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; }
+    .type-specimen .spec { padding: 2rem; border: 1px solid var(--rule); background: #fff; }
+    .type-specimen .big { font-size: 64px; line-height: 1; margin: 0.5rem 0 1rem; }
+    .type-specimen p { margin: 0; font-size: 14px; color: var(--ink); }
+    .scale { display: grid; gap: 0; border-top: 1px solid var(--rule); }
+    .scale .row { display: grid; grid-template-columns: 9rem 1fr; gap: 1rem; align-items: baseline; padding: 1rem 0; border-bottom: 1px solid var(--rule); }
+    .scale .row .label { white-space: nowrap; }
+    .scale .row > :last-child { overflow-wrap: anywhere; }
+
+    .voice { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
+    .voice .card { padding: 1.5rem; border: 1px solid var(--rule); background: #fff; }
+    @media (max-width: 720px) { .voice { grid-template-columns: 1fr; } }
+    .voice .card p { margin: 0.5rem 0 0; color: var(--ink); }
+    .rules { margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 0.75rem 2rem; }
+    .rules li { padding-left: 1.25rem; position: relative; color: var(--ink); }
+    .rules li::before { content: "—"; position: absolute; left: 0; color: var(--moss); }
+
+    .downloads { border-top: 1px solid var(--rule); }
+    .downloads a { display: grid; grid-template-columns: 1fr auto; gap: 1rem; padding: 0.9rem 0; border-bottom: 1px solid var(--rule); text-decoration: none; color: var(--pine); }
+    .downloads a span:last-child { color: var(--muted); font-size: 13px; }
+    .downloads a:hover span:first-child { text-decoration: underline; text-underline-offset: 4px; }
+
+    .code { position: relative; }
+    .code pre { margin: 0; padding: 1.5rem; overflow-x: auto; background: var(--pine-deep); color: #e8ece6; font-size: 13px; line-height: 1.6; }
+    .code button { position: absolute; top: 0.75rem; right: 0.75rem; padding: 0.4rem 0.8rem; border: 1px solid rgba(250, 249, 246, 0.3); background: transparent; color: var(--paper); font: 500 12px var(--sans); cursor: pointer; }
+    .code button:hover { border-color: var(--paper); }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="./" aria-label="Dubois & Co. home">
+      <img src="assets/logo/dubois-logo-horizontal.svg?v=2" alt="Dubois & Co." width="553" height="278">
+    </a>
+    <nav class="site-nav" aria-label="Primary">
+      <span class="links">
+        <a class="link" href="about.html">About</a>
+        <a class="link" href="companies.html">Companies</a>
+        <a class="link" href="mailto:contact@duboisco.ca">Contact</a>
+      </span>
+    </nav>
+  </header>
+
+  <main class="kit">
+    <div class="kit-wrap">
+
+      <section class="kit-hero">
+        <span class="label">Brand kit · v1.0</span>
+        <h1>Dubois &amp; Co.</h1>
+        <p>Everything needed to make something that looks like us: the logo and its rules, colours, type, voice, ready-to-use files and the CSS tokens behind the website.</p>
+        <nav class="toc" aria-label="Sections">
+          <a class="link" href="#logo">Logo</a>
+          <a class="link" href="#colour">Colour</a>
+          <a class="link" href="#type">Type</a>
+          <a class="link" href="#voice">Voice</a>
+          <a class="link" href="#assets">Assets</a>
+          <a class="link" href="#tokens">Tokens</a>
+        </nav>
+      </section>
+
+      <!-- LOGO -->
+      <section class="kit-sec" id="logo">
+        <span class="label">01</span>
+        <h2>Logo</h2>
+        <p>Three pines and a Garamond wordmark. The pines stand for what we hold: different businesses that grow side by side from shared roots. The logo is never redrawn, recoloured or rearranged; use the files below.</p>
+
+        <div class="tiles">
+          <figure class="tile" style="margin:0">
+            <div class="stage paper"><img src="assets/logo/dubois-logo-full.svg?v=2" alt="Full logo"></div>
+            <figcaption class="cap"><b>Full lockup</b><span>Hero, cover pages, signage. EN and FR versions; match the tagline to the page language</span></figcaption>
+          </figure>
+          <figure class="tile" style="margin:0">
+            <div class="stage paper"><img src="assets/logo/dubois-logo-horizontal.svg?v=2" alt="Horizontal logo"></div>
+            <figcaption class="cap"><b>Horizontal</b><span>Headers, documents, email</span></figcaption>
+          </figure>
+          <figure class="tile" style="margin:0">
+            <div class="stage paper"><img src="assets/logo/dubois-mark.svg?v=2" alt="Pine mark"></div>
+            <figcaption class="cap"><b>Mark</b><span>Favicon, avatar, small spaces</span></figcaption>
+          </figure>
+        </div>
+
+        <h3>On dark grounds</h3>
+        <div class="tiles">
+          <figure class="tile" style="margin:0">
+            <div class="stage pine"><img src="assets/logo/dubois-logo-full-white.svg?v=2" alt="Full logo, paper on pine"></div>
+            <figcaption class="cap"><b>Paper on pine</b><span>The preferred reverse</span></figcaption>
+          </figure>
+          <figure class="tile" style="margin:0">
+            <div class="stage deep"><img src="assets/logo/dubois-logo-horizontal-white.svg?v=2" alt="Horizontal logo, paper on pine deep"></div>
+            <figcaption class="cap"><b>Paper on pine deep</b><span>Footers, bands, slides</span></figcaption>
+          </figure>
+          <figure class="tile" style="margin:0">
+            <div class="stage pine"><img src="assets/logo/dubois-mark-white.svg?v=2" alt="Mark, paper on pine"></div>
+            <figcaption class="cap"><b>Mark reversed</b><span>Social avatars</span></figcaption>
+          </figure>
+        </div>
+
+        <h3>Clear space</h3>
+        <p style="margin:0 0 1.25rem;color:var(--ink);max-width:42rem">Keep a margin of at least <b style="font-weight:500">x</b> on every side, where x is the height of the “D” in Dubois. Nothing else (text, edges, other logos) goes inside it.</p>
+        <div class="clear-demo"><span class="x">x</span><img src="assets/logo/dubois-logo-horizontal.svg?v=2" alt="Logo with clear space shown"></div>
+
+        <h3>Minimum size</h3>
+        <div class="sizes">
+          <figure><img src="assets/logo/dubois-logo-full.svg?v=2" alt="" style="width:180px"><figcaption>Full · 180px / 45mm wide</figcaption></figure>
+          <figure><img src="assets/logo/dubois-logo-horizontal.svg?v=2" alt="" style="width:110px"><figcaption>Horizontal · 110px / 28mm wide</figcaption></figure>
+          <figure><img src="assets/logo/dubois-mark.svg?v=2" alt="" style="width:20px"><figcaption>Mark · 20px / 6mm wide</figcaption></figure>
+        </div>
+        <p style="margin:1.25rem 0 0;color:var(--muted);font-size:14px;max-width:42rem">Below the full lockup's minimum the tagline stops being legible, so switch to the horizontal logo.</p>
+
+        <h3>Misuse</h3>
+        <div class="tiles misuse">
+          <figure class="tile" style="margin:0"><div class="stage paper"><img src="assets/logo/dubois-logo-horizontal.svg?v=2" alt="" style="transform:scaleX(1.45)"></div><figcaption class="cap">Don't stretch or squash</figcaption></figure>
+          <figure class="tile" style="margin:0"><div class="stage paper"><img src="assets/logo/dubois-logo-horizontal.svg?v=2" alt="" style="filter:hue-rotate(160deg) saturate(2)"></div><figcaption class="cap">Don't recolour</figcaption></figure>
+          <figure class="tile" style="margin:0"><div class="stage paper"><img src="assets/logo/dubois-logo-horizontal.svg?v=2" alt="" style="transform:rotate(-12deg)"></div><figcaption class="cap">Don't rotate</figcaption></figure>
+          <figure class="tile" style="margin:0"><div class="stage" style="background:#5d8c6f"><img src="assets/logo/dubois-logo-horizontal.svg?v=2" alt=""></div><figcaption class="cap">Don't place on low-contrast grounds</figcaption></figure>
+          <figure class="tile" style="margin:0"><div class="stage paper"><img src="assets/logo/dubois-logo-horizontal.svg?v=2" alt="" style="filter:drop-shadow(4px 6px 4px rgba(0,0,0,.45))"></div><figcaption class="cap">Don't add shadows or effects</figcaption></figure>
+          <figure class="tile" style="margin:0"><div class="stage paper" style="font-family:var(--serif);font-size:42px;gap:0">Dubois &amp; Co.</div><figcaption class="cap">Don't retype the wordmark</figcaption></figure>
+        </div>
+      </section>
+
+      <!-- COLOUR -->
+      <section class="kit-sec" id="colour">
+        <span class="label">02</span>
+        <h2>Colour</h2>
+        <p>A forest palette: one green that does almost everything, set on warm paper. Click a swatch to copy its hex.</p>
+
+        <div class="swatches">
+          <button class="swatch" data-hex="#18594A"><div class="chip" style="background:#18594a"></div><div class="meta"><b>Pine</b><code>#18594A</code><br><span class="label">Primary · logo, text, buttons</span></div></button>
+          <button class="swatch" data-hex="#0F3B31"><div class="chip" style="background:#0f3b31"></div><div class="meta"><b>Pine deep</b><code>#0F3B31</code><br><span class="label">Dark grounds, bands</span></div></button>
+          <button class="swatch" data-hex="#FAF9F6"><div class="chip" style="background:#faf9f6;border-bottom:1px solid var(--rule)"></div><div class="meta"><b>Paper</b><code>#FAF9F6</code><br><span class="label">Background</span></div></button>
+          <button class="swatch" data-hex="#6F8F7F"><div class="chip" style="background:#6f8f7f"></div><div class="meta"><b>Moss</b><code>#6F8F7F</code><br><span class="label">Secondary marks, rules</span></div></button>
+          <button class="swatch" data-hex="#8A6A4F"><div class="chip" style="background:#8a6a4f"></div><div class="meta"><b>Bark</b><code>#8A6A4F</code><br><span class="label">Rare warm accent</span></div></button>
+        </div>
+
+        <h3>Proportion</h3>
+        <div class="proportion" aria-label="Paper 70%, Pine 22%, Pine deep 5%, Moss and Bark 3%">
+          <div style="flex:70;background:var(--paper);color:var(--pine)">PAPER 70</div>
+          <div style="flex:22;background:var(--pine);color:var(--paper)">PINE 22</div>
+          <div style="flex:5;background:var(--pine-deep)"></div>
+          <div style="flex:2;background:var(--moss)"></div>
+          <div style="flex:1;background:var(--bark)"></div>
+        </div>
+
+        <h3>Approved pairings</h3>
+        <div class="pairs">
+          <div class="pair" style="background:var(--paper);color:var(--pine)"><div class="serif">Pine on paper</div><small>Default · AAA contrast</small></div>
+          <div class="pair" style="background:var(--pine);color:var(--paper)"><div class="serif">Paper on pine</div><small>Reverse · AAA contrast</small></div>
+          <div class="pair" style="background:var(--pine-deep);color:var(--paper)"><div class="serif">Paper on pine deep</div><small>Footers, slides</small></div>
+          <div class="pair" style="background:#fff;color:var(--pine)"><div class="serif">Pine on white</div><small>Print, documents</small></div>
+        </div>
+      </section>
+
+      <!-- TYPE -->
+      <section class="kit-sec" id="type">
+        <span class="label">03</span>
+        <h2>Type</h2>
+        <p>EB Garamond echoes the wordmark and carries headings. Inter keeps body copy and interface text plain and readable. Both are free on Google Fonts. In Office documents, fall back to Garamond and Calibri.</p>
+
+        <div class="type-specimen">
+          <div class="spec">
+            <span class="label">Headings</span>
+            <div class="big serif">Aa</div>
+            <p class="serif" style="font-size:22px;margin-bottom:.5rem">EB Garamond</p>
+            <p>Regular 400, Medium 500, Italic for the tagline only. Sentence case.</p>
+          </div>
+          <div class="spec">
+            <span class="label">Body &amp; interface</span>
+            <div class="big" style="font-family:var(--sans);letter-spacing:-0.02em">Aa</div>
+            <p style="font-size:18px;margin-bottom:.5rem;color:var(--pine)">Inter</p>
+            <p>Regular 400 and Medium 500. Uppercase only for labels of 13px or smaller.</p>
+          </div>
+        </div>
+
+        <h3>Scale</h3>
+        <div class="scale">
+          <div class="row"><span class="label">Display · 68</span><span class="serif" style="font-size:clamp(36px,5.6vw,68px);line-height:1.02">Built to last</span></div>
+          <div class="row"><span class="label">H2 · 38</span><span class="serif" style="font-size:clamp(26px,3.4vw,38px);line-height:1.1">Build, acquire, hold</span></div>
+          <div class="row"><span class="label">H3 · 22</span><span class="serif" style="font-size:22px">Proven economics</span></div>
+          <div class="row"><span class="label">Body · 17</span><span style="font-size:17px;color:var(--ink)">We start new businesses and acquire established ones across many sectors.</span></div>
+          <div class="row"><span class="label">Small · 13</span><span style="font-size:13px;color:var(--ink)">© Dubois &amp; Co. · contact@duboisco.ca</span></div>
+          <div class="row"><span class="label">Label · 11</span><span class="label">What we look for</span></div>
+          <div class="row"><span class="label">Tagline · FR</span><span class="serif" style="font-size:22px;font-style:italic">Préserver ce qui fonctionne. Faire croître le futur.</span></div>
+          <div class="row"><span class="label">Tagline · EN</span><span class="serif" style="font-size:22px;font-style:italic">Preserve what works. Grow what’s next.</span></div>
+        </div>
+      </section>
+
+      <!-- VOICE -->
+      <section class="kit-sec" id="voice">
+        <span class="label">04</span>
+        <h2>Voice &amp; boilerplate</h2>
+        <p>Calm, plain and long-term. We sound like owners, not dealmakers.</p>
+
+        <ul class="rules">
+          <li>Short sentences. Plain words. No jargon like “synergies” or “platform plays”.</li>
+          <li>Talk about people, customers and continuity before returns.</li>
+          <li>Confident, never boastful. No superlatives.</li>
+          <li>Sentence case everywhere. No exclamation marks.</li>
+          <li>Bilingual by default. Write French natively; don't translate word for word.</li>
+          <li>Our name is “Dubois &amp; Co.” in running text, never “DuboisCo” or “Dubois and Company”.</li>
+        </ul>
+
+        <h3>Boilerplate</h3>
+        <div class="voice">
+          <div class="card"><span class="label">One line · EN</span><p>Dubois &amp; Co. builds and acquires durable businesses, and holds them for the long term.</p></div>
+          <div class="card"><span class="label">One line · FR</span><p>Dubois &amp; Co. crée et acquiert des entreprises durables, et les conserve à long terme.</p></div>
+          <div class="card"><span class="label">Short · EN</span><p>Dubois &amp; Co. is a holding company. We start new businesses and acquire established ones across many sectors, keep what makes them work, and give them the capital and patience to grow. Preserve what works. Grow what's next.</p></div>
+          <div class="card"><span class="label">Short · FR</span><p>Dubois &amp; Co. est une société de portefeuille. Nous créons et acquérons des entreprises dans plusieurs secteurs, préservons ce qui les fait fonctionner et leur donnons le capital et la patience pour grandir. Préserver ce qui fonctionne. Faire croître le futur.</p></div>
+        </div>
+      </section>
+
+      <!-- ASSETS -->
+      <section class="kit-sec" id="assets">
+        <span class="label">05</span>
+        <h2>Assets</h2>
+        <p>SVG is the vector master: sharp at any size, for web and print. Transparent PNGs are exported from it at 2× for tools that don't take SVG. Right-click and save, or click to download.</p>
+        <div class="downloads">
+          <a href="assets/logo/dubois-logo-full-en.svg" download><span>Full lockup · EN · pine</span><span>SVG · vector</span></a>
+          <a href="assets/logo/dubois-logo-full-en.png" download><span>Full lockup · EN · pine</span><span>PNG · 1632×750</span></a>
+          <a href="assets/logo/dubois-logo-full-en-white.svg" download><span>Full lockup · EN · paper (for dark grounds)</span><span>SVG · vector</span></a>
+          <a href="assets/logo/dubois-logo-full-en-white.png" download><span>Full lockup · EN · paper (for dark grounds)</span><span>PNG · 1632×750</span></a>
+          <a href="assets/logo/dubois-logo-full.svg" download><span>Full lockup · FR · pine</span><span>SVG · vector</span></a>
+          <a href="assets/logo/dubois-logo-full.png" download><span>Full lockup · FR · pine</span><span>PNG · 1632×750</span></a>
+          <a href="assets/logo/dubois-logo-full-white.svg" download><span>Full lockup · FR · paper (for dark grounds)</span><span>SVG · vector</span></a>
+          <a href="assets/logo/dubois-logo-full-white.png" download><span>Full lockup · FR · paper (for dark grounds)</span><span>PNG · 1632×750</span></a>
+          <a href="assets/logo/dubois-logo-horizontal.svg" download><span>Horizontal · pine</span><span>SVG · vector</span></a>
+          <a href="assets/logo/dubois-logo-horizontal.png" download><span>Horizontal · pine</span><span>PNG · 1106×556</span></a>
+          <a href="assets/logo/dubois-logo-horizontal-white.svg" download><span>Horizontal · paper</span><span>SVG · vector</span></a>
+          <a href="assets/logo/dubois-logo-horizontal-white.png" download><span>Horizontal · paper</span><span>PNG · 1106×556</span></a>
+          <a href="assets/logo/dubois-mark.svg" download><span>Mark · pine</span><span>SVG · vector</span></a>
+          <a href="assets/logo/dubois-mark.png" download><span>Mark · pine</span><span>PNG · 436×556</span></a>
+          <a href="assets/logo/dubois-mark-white.svg" download><span>Mark · paper</span><span>SVG · vector</span></a>
+          <a href="assets/logo/dubois-mark-white.png" download><span>Mark · paper</span><span>PNG · 436×556</span></a>
+          <a href="assets/logo/dubois-avatar-pine.png" download><span>Social avatar · pine ground</span><span>PNG · 512×512</span></a>
+          <a href="assets/logo/dubois-avatar-paper.png" download><span>Social avatar · paper ground</span><span>PNG · 512×512</span></a>
+          <a href="assets/og.png" download><span>Link preview / Open Graph</span><span>PNG · 1200×630</span></a>
+          <a href="duboislogo.png" download><span>Original raster master (legacy)</span><span>PNG · 1063×1063</span></a>
+        </div>
+      </section>
+
+      <!-- TOKENS -->
+      <section class="kit-sec" id="tokens">
+        <span class="label">06</span>
+        <h2>Tokens</h2>
+        <p>The CSS variables behind the website. Paste them into anything built for the web.</p>
+        <div class="code">
+          <button type="button" id="copyTokens">Copy</button>
+<pre id="tokens-code">:root {
+  /* colour */
+  --pine: #18594a;
+  --pine-deep: #0f3b31;
+  --moss: #6f8f7f;
+  --bark: #8a6a4f;
+  --paper: #faf9f6;
+  --ink: rgba(24, 89, 74, 0.86);
+  --muted: rgba(24, 89, 74, 0.62);
+  --rule: rgba(24, 89, 74, 0.16);
+
+  /* type */
+  --serif: "EB Garamond", Garamond, Georgia, serif;
+  --sans: "Inter", "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+  /* layout */
+  --gutter: clamp(20px, 5vw, 76px);
+}
+
+/* fonts */
+@import url("https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&amp;family=Inter:wght@400;500&amp;display=swap");</pre>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <nav aria-label="Footer">
+      <a class="link" href="about.html">About</a>
+      <a class="link" href="companies.html">Companies</a>
+      <a class="link" href="mailto:contact@duboisco.ca">Contact</a>
+      <span class="copy">© Dubois &amp; Co.</span>
+    </nav>
+    <a class="brand" href="./" aria-label="Dubois & Co. home">
+      <img src="assets/logo/dubois-logo-horizontal.svg?v=2" alt="" width="553" height="278">
+    </a>
+  </footer>
+
+  <script>
+    function copy(text, el, attr) {
+      if (!navigator.clipboard) return;
+      navigator.clipboard.writeText(text).then(function () {
+        el.setAttribute(attr, '');
+        setTimeout(function () { el.removeAttribute(attr); }, 1400);
+      });
+    }
+    document.querySelectorAll('.swatch').forEach(function (s) {
+      s.addEventListener('click', function () { copy(s.dataset.hex, s, 'data-copied'); });
+    });
+    var btn = document.getElementById('copyTokens');
+    btn.addEventListener('click', function () {
+      navigator.clipboard && navigator.clipboard.writeText(document.getElementById('tokens-code').textContent).then(function () {
+        btn.textContent = 'Copied';
+        setTimeout(function () { btn.textContent = 'Copy'; }, 1400);
+      });
+    });
+  </script>
+</body>
+</html>

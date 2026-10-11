@@ -4,63 +4,35 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Dubois & Co.</title>
-  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;600&display=swap" rel="stylesheet">
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      background-color: #faf9f6;
-      font-family: 'EB Garamond', serif;
-    }
-    .navbar {
-      display: flex;
-      justify-content: flex-end;
-      align-items: center;
-      gap: 2rem;
-      padding: 1.5rem 2rem;
-      background-color: transparent;
-      flex-wrap: wrap;
-    }
-    .navbar a {
-      color: #18594a;
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 1.1rem;
-      transition: opacity 0.3s ease;
-    }
-    .navbar a:hover {
-      opacity: 0.6;
-    }
-    .logo-container {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 80vh;
-      text-align: center;
-    }
-    .logo-container img {
-      max-width: 600px;
-      width: 80%;
-      height: auto;
-      transition: transform 0.3s ease, opacity 0.3s ease;
-    }
-    .logo-container img:hover {
-      transform: scale(1.05);
-      opacity: 0.95;
-    }
-    @media (max-width: 600px) {
-      .navbar {
-        justify-content: center;
-      }
-    }
-  </style>
+  <meta name="description" content="Dubois & Co. is a holding company that builds and acquires durable businesses across sectors, and holds them for the long term.">
+  <link rel="alternate" hreflang="en" href="https://duboisco.ca/">
+  <link rel="alternate" hreflang="fr" href="https://duboisco.ca/fr/">
+  <meta property="og:title" content="Dubois & Co.">
+  <meta property="og:description" content="Preserve what works. Grow what's next.">
+  <meta property="og:image" content="https://duboisco.ca/assets/og.png">
+  <meta property="og:url" content="https://duboisco.ca/">
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+  <link rel="apple-touch-icon" href="assets/logo/dubois-avatar-paper.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/site.css?v=2">
 </head>
 <body>
-  <div class="navbar">
-    <a href="mailto:contact@duboisco.ca">Contact</a>
-  </div>
-  <div class="logo-container">
-    <img src="duboislogo.png" alt="Dubois & Co. logo">
-  </div>
+  <main class="home">
+    <div class="lang">
+      <span aria-current="true">EN</span><span>/</span><a href="fr/" hreflang="fr" lang="fr">FR</a>
+    </div>
+    <h1 class="fade-up">
+      <img class="home-logo" src="assets/logo/dubois-logo-full-en.svg?v=2" alt="Dubois & Co. — Preserve what works. Grow what’s next." width="816" height="375">
+    </h1>
+    <nav class="home-nav fade-up d1" aria-label="Primary">
+      <a class="link" href="about.html">About</a>
+      <span class="sep" aria-hidden="true">|</span>
+      <a class="link" href="companies.html">Companies</a>
+      <span class="sep" aria-hidden="true">|</span>
+      <a class="link" href="mailto:contact@duboisco.ca">Contact</a>
+    </nav>
+  </main>
 </body>
 </html>
