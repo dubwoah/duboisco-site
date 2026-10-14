@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 120 120" fill="none" role="img" aria-label="Relay app icon">
+  <title>Relay app icon — mark on ink tile</title>
+  <rect width="120" height="120" rx="27" fill="#1a1a2e"/>
+  <g transform="translate(28 28) scale(1.6)">
+    <circle cx="12" cy="20" r="4" fill="#ff6b35"/>
+    <path d="M17.16 12.63 A9 9 0 0 1 17.16 27.37" stroke="#ff6b35" stroke-width="3.4" stroke-linecap="round"/>
+    <path d="M20.6 7.72 A15 15 0 0 1 20.6 32.28" stroke="#ff6b35" stroke-width="3.4" stroke-linecap="round" opacity="0.7"/>
+  </g>
+</svg>
